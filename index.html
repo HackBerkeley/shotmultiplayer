@@ -1,0 +1,60 @@
+<html>
+<head>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="/nowjs/now.js"></script>
+<script>
+
+  $(document).ready(function(){
+    
+    var id = 0;
+    
+    now.name = prompt("What's your name");
+      
+    now.updateBlock = function(pos, targetId, scores) {
+      $("#target").animate({left: pos.left, top: pos.top}, 100);
+      id = targetId;
+      
+      $("#scores").empty();
+      for(var name in scores) {
+        $("#scores").append($("<div></div>").text(name + ": " + scores[name]));
+      }      
+    }
+        
+    $("#target").click(function(){
+      now.clickedTarget(id);
+    });
+    
+  });
+
+</script>
+
+<style>
+#gameboard {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  position: relative;
+}
+#target {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  background-color: red;
+}
+</style>
+
+</head>
+<body>
+
+
+<div id="gameboard">
+  <div id="target"></div>
+</div>
+<div id="scores"></div>
+
+
+</body>
+</html>
